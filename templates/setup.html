@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Farm Setup</h2>
+<h4>Farm Name</h4>
+<form method="post" class="mb-4">
+  <input name="farm_name" class="form-control mb-2" value="{{ config.farm_name }}" required>
+  <button class="btn btn-primary" type="submit">Save Farm Name</button>
+</form>
+
+<h4>Goat Types</h4>
+<form method="post" class="row g-2 mb-2">
+  <div class="col-auto">
+    <input name="add_goat_type" class="form-control" placeholder="Add new type" required>
+  </div>
+  <div class="col-auto">
+    <button class="btn btn-success" type="submit">
+      <span class="bi bi-plus"></span> Add
+    </button>
+  </div>
+</form>
+<ul class="list-group mb-2">
+  {% for t in goat_types %}
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+      {{ t.name }}
+      <form method="post" style="display:inline">
+        <input type="hidden" name="delete_type" value="{{ t.id }}">
+        <button class="btn btn-danger btn-sm" type="submit" onclick="return confirm('Delete this type?')">Delete</button>
+      </form>
+    </li>
+  {% endfor %}
+</ul>
+{% endblock %}
+

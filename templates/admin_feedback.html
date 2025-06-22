@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>🐐 Worker Feedback Log</h2>
+<p class="text-muted">Most recent remarks submitted by workers for goats.</p>
+
+<table class="table table-bordered table-hover">
+  <thead>
+    <tr>
+      <th>Goat</th>
+      <th>Feedback</th>
+      <th>Submitted By</th>
+      <th>Timestamp</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for fb in feedbacks %}
+    <tr>
+      <td><a href="{{ url_for('goat_detail', tag=fb.goat.tag) }}">{{ fb.goat.tag }}</a></td>
+      <td>{{ fb.content }}</td>
+      <td>{{ fb.submitted_by }}</td>
+      <td>{{ fb.timestamp.strftime('%d-%m-%Y %H:%M') }}</td>
+    </tr>
+    {% else %}
+    <tr><td colspan="4" class="text-muted">No feedback submitted yet.</td></tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+{% endblock %}

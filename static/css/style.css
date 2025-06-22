@@ -1,0 +1,106 @@
+/* ================== Goat Manager App Custom Styles ================== */
+
+/* --- Photo thumbnail with overlay and delete button --- */
+.photo-thumb {
+  position: relative;
+  display: inline-block;
+  margin: 3px 4px;
+  vertical-align: middle;
+}
+.photo-thumb img {
+  max-width: 60px;
+  max-height: 60px;
+  border-radius: 8px;
+  box-shadow: 0 1px 5px #0002;
+  cursor: pointer;
+  transition: box-shadow 0.2s;
+  background: #fafafa;
+}
+.photo-thumb:hover img,
+.photo-thumb:focus-within img {
+  box-shadow: 0 2px 10px #0004;
+}
+.photo-thumb .photo-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(40, 40, 40, 0.48);
+  border-radius: 8px;
+  opacity: 0;
+  transition: opacity 0.16s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.photo-thumb:hover .photo-overlay,
+.photo-thumb:focus-within .photo-overlay {
+  opacity: 1;
+}
+.photo-thumb .delete-btn {
+  background: #e44;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 22px; height: 22px;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  opacity: 0.95;
+  box-shadow: 0 1px 4px #0003;
+  margin-left: 2px;
+  outline: none;
+}
+.photo-thumb .delete-btn:hover, .photo-thumb .delete-btn:focus {
+  background: #b00;
+  opacity: 1;
+}
+
+/* --- Badge tweaks for goat tags (color already handled by Bootstrap, but a little bolder) --- */
+.badge {
+  font-size: 0.97em;
+  padding: 0.44em 0.8em;
+  letter-spacing: 0.02em;
+  margin-right: 3px;
+  margin-bottom: 2px;
+  font-weight: 600;
+}
+
+/* --- Goat Table: subtle hover for row --- */
+.table-hover tbody tr:hover {
+  background: #f7fbee;
+  transition: background 0.13s;
+}
+
+/* --- Weight/Vaccine chart tweaks for better spacing --- */
+#weightChart {
+  margin-bottom: 24px;
+}
+
+/* --- Responsive tweaks for mobile photo thumbnails --- */
+@media (max-width: 600px) {
+  .photo-thumb img {
+    max-width: 48px;
+    max-height: 48px;
+  }
+}
+
+/* --- Optional: hide number spinners for clean mobile UI --- */
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+input[type=number] { -moz-appearance: textfield; }
+
+
+.alert-floating {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2000;
+  width: auto;
+  max-width: 90%;
+  opacity: 0.95;
+}
